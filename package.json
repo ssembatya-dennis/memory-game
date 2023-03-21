@@ -1,5 +1,30 @@
 {
+  "name": "memory",
+  "description": "A java-script memory game that tests memory strength and fundamental understanding of data-structures",
+  "version": "1.0.0",
+  "main": "index.html",
+  "devDependencies": {},
   "dependencies": {
     "typescript": "^5.0.2"
-  }
+  },
+  "scripts": {
+    "test": "jest --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ssembatya-dennis/memory-game.git"
+  },
+  "keywords": [
+    "memory",
+    "java-script",
+    "machine",
+    "data-structures",
+    "memory-game"
+  ],
+  "author": "Dennis",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ssembatya-dennis/memory-game/issues"
+  },
+  "homepage": "https://github.com/ssembatya-dennis/memory-game#readme"
 }
