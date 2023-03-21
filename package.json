@@ -3,9 +3,11 @@
   "description": "A java-script memory game that tests memory strength and fundamental understanding of data-structures",
   "version": "1.0.0",
   "main": "index.html",
-  "devDependencies": {},
   "dependencies": {
-    "typescript": "^5.0.2"
+    "ts-loader": "^9.4.2",
+    "typescript": "^5.0.2",
+    "webpack": "^5.76.2",
+    "webpack-cli": "^5.0.1"
   },
   "scripts": {
     "test": "jest --watch"
