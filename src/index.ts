@@ -1,1 +1,1 @@
-alert("You've just got typed");
+console.log("This is a test for a running script");

@@ -1,1 +1,1 @@
-(()=>{"use strict";alert("You've just got typed")})();
+(()=>{"use strict";console.log("This is a test for a running script")})();
