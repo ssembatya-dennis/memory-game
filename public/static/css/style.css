@@ -1,3 +1,38 @@
-body {
-  background-color: rgb(6, 6, 68);
+/* Global CSS declarations*/
+
+:root {
+  /* Colors */
+  --color-secondary: #fda214;
+  --color-primary: #7191a5;
+  --color-primary-light-1: #6395b8;
+  --color-primary-light-2: #bcced9;
+  --color-primary-dark-1: #304859;
+  --color-primary-dark-2: #152938;
+  --color-gray-light-1: #f2f2f2;
+  --color-gray-light-2: #fcfcfc;
+}
+
+/* Global CSS Reset*/
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Root font-size */
+html {
+  font-size: 62.5%; /* 1rem = 10px*/
+}
+
+.icon::before {
+  font: var(--fa-font-solid);
+  font-weight: 900;
+  content: "\f007";
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
 }
