@@ -1,5 +1,7 @@
 /* Global CSS declarations*/
 
+@import url("https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap");
+
 :root {
   /* Colors */
   --color-secondary: #fda214;
@@ -24,6 +26,50 @@
 /* Root font-size */
 html {
   font-size: 62.5%; /* 1rem = 10px*/
+}
+
+/* Typography */
+
+body {
+  font-family: "Atkinson Hyperlegible";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 1.8rem;
+  line-height: 2.2rem;
+  color: var(--color-primary-dark-2);
+}
+
+h1 {
+  font-size: 4.8rem;
+  line-height: 6rem;
+}
+
+h2 {
+  font-size: 3.2rem;
+  line-height: 4rem;
+}
+
+h3 {
+  font-size: 2rem;
+  line-height: 2.5rem;
+}
+
+.medium-text {
+  font-family: "Atkinson Hyperlegible";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 4.4rem;
+  line-height: 5.5rem;
+  color: var(--color-primary-dark-2);
+}
+
+.big-text {
+  font-family: "Atkinson Hyperlegible";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 5.6rem;
+  line-height: 6.9rem;
+  color: var(--color-primary-dark-2);
 }
 
 .icon::before {
