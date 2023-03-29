@@ -65,13 +65,29 @@ h3 {
   line-height: 2.5rem;
 }
 
+.btn-text {
+  font-family: "Atkinson Hyperlegible";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 2.6rem;
+  line-height: 3.2rem;
+  text-align: center;
+  color: var(--color-gray-light-2);
+}
+
+.start-logo {
+  font-size: 4rem;
+  line-height: 5rem;
+  color: var(--color-gray-light-2);
+}
+
 .medium-text {
   font-family: "Atkinson Hyperlegible";
   font-style: normal;
   font-weight: 700;
-  font-size: 4.4rem;
-  line-height: 5.5rem;
-  color: var(--color-primary-dark-2);
+  font-size: 3.2rem;
+  line-height: 4rem;
+  color: var(--color-gray-light-2);
 }
 
 .big-text {
@@ -107,7 +123,7 @@ h3 {
   opacity: 0.8;
 }
 
-.menu-button--select {
+.menu-button-select {
   width: 256px;
   height: 5.2rem;
   padding: 1.1rem auto 0.9rem;
@@ -115,7 +131,19 @@ h3 {
   border-radius: 2.6rem;
 }
 
-.menu-button--select:hover {
+.menu-button-select:hover {
+  background: var(--color-primary-light-1);
+}
+
+.menu-button-select--num {
+  width: 119px;
+  height: 5.2rem;
+  padding: 1.1rem auto 0.9rem;
+  background: var(--color-primary-light-2);
+  border-radius: 2.6rem;
+}
+
+.menu-button-select--num:hover {
   background: var(--color-primary-light-1);
 }
 
@@ -184,4 +212,39 @@ h3 {
 
 .car::before {
   content: "\f1b9";
+}
+
+/* Start screen styles */
+
+.start-screen {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5.8rem;
+  background-color: var(--color-primary-dark-2);
+}
+
+.start-game {
+  display: flex;
+  flex-direction: column;
+  gap: 3.2rem;
+  padding: 3.6rem 5.6rem;
+  background: var(--color-gray-light-2);
+  border-radius: 2rem;
+}
+
+.game-setting--option {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.6rem;
+}
+
+.btn-wrapper {
+  width: 54rem;
+  display: flex;
+  justify-content: space-between;
 }
