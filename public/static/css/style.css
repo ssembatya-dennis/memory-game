@@ -165,6 +165,7 @@ h3 {
   height: 5.2rem;
   padding: 1.3rem auto 1.4rem;
   background: #dfe7ec;
+  color: var(--color-primary-dark-1);
   border-radius: 2.6rem;
 }
 
@@ -250,6 +251,76 @@ h3 {
   justify-content: space-between;
 }
 
+.hide {
+  display: none;
+}
+
+/*Game board screen*/
+
+.game-container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 6.7rem;
+  background-color: var(--color-gray-light-1);
+}
+
+.game-board {
+  width: 100%;
+  display: grid;
+  gap: 2rem;
+}
+
+.game-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.6rem;
+}
+
+.game-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-container {
+  position: relative;
+  width: 11.8rem;
+  height: 11.8rem;
+  cursor: pointer;
+}
+
+.card-back,
+.card-front {
+  position: absolute;
+  border-radius: 59px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.7s ease-out;
+  backface-visibility: hidden;
+}
+
+.card-back {
+  background-color: var(--color-primary-dark-1);
+}
+
+.card-front {
+  background-color: var(--color-primary-light-2);
+  transform: rotateY(180deg);
+}
+
+.card-container.flipped.card-back {
+  transform: rotateY(180deg);
+}
+
+.card-container.flipped.card-front {
+  transform: rotateY(0deg);
+}
 @media (max-width: 75em) {
   html {
     font-size: 56.25%; /*1rem = 9px/16px = 56.25% */
