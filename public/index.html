@@ -24,7 +24,7 @@
   <body>
     <!-- Game setup start -->
 
-    <section class="game start-screen hide">
+    <section class="game start-screen">
       <div class="logo-box">
         <h2 class="start-logo">memory</h2>
       </div>
@@ -63,7 +63,7 @@
     <!-- Game setup end -->
 
     <!-- Game board start -->
-    <section class="game-container">
+    <section class="game-container hide">
       <div class="game-controls">
         <div class="logo-box">
           <svg width="150" height="28" xmlns="http://www.w3.org/2000/svg">
@@ -76,16 +76,26 @@
         </div>
 
         <div class="game-buttons">
-          <button class="btn btn-text menu-button--small">Restart</button>
+          <button class="btn btn-text menu-button--small" id="restart-btn">
+            Restart
+          </button>
           <button class="btn btn-text btn-secondary">New game</button>
         </div>
       </div>
 
-      <div class="game-board"></div>
+      <div class="board-wrapper">
+        <div class="game-board"></div>
+      </div>
 
       <div class="stats-container">
-        <div id="move-count"></div>
-        <div id="time"></div>
+        <div class="stats-card">
+          <span class="stats-text">Time:</span>
+          <div class="stats-num" id="time"></div>
+        </div>
+        <div class="stats-card">
+          <span class="stats-text">Move:</span>
+          <div class="stats-num" id="move-count">0</div>
+        </div>
       </div>
     </section>
 

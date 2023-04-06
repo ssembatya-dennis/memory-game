@@ -81,20 +81,21 @@ abstract class MemoryGame {
 }
 
 // From source
-const moves = document.getElementById("moves-count")!;
+const moves = document.getElementById("move-count")!;
 const timeValue = document.getElementById("time")!;
-const startButton = document.getElementById("start");
-const reStartButton = document.getElementById("re-start");
+const startButton = document.getElementById("start")!;
+const reStartButton = document.getElementById("restart-btn")!;
 const newGameButton = document.getElementById("new-game");
-const startScreen = document.getElementById(".start-screen");
+const startScreen = document.querySelector(".start-screen")!;
+const gameContainer = document.querySelector(".game-container")!;
 const gameBoard = document.querySelector(".game-board" as any)!;
 const controls = document.querySelector(".game-controls");
 
 let cards;
 let interval;
-let firstCardValue;
-let firstCard = false;
-let secondCard = false;
+let firstCardValue: any;
+let firstCard: any = false;
+let secondCard: any = false;
 
 // Items array
 const items = [
@@ -132,14 +133,14 @@ const timeGenerator = () => {
   // format time before displaying
   let secondsValue = seconds < 10 ? `0${seconds}` : seconds;
   let minutesValue = minutes < 10 ? `0${minutes}` : minutes;
-  timeValue.innerHTML = `<span>Time:</span>${minutesValue}:${secondsValue}`;
+  timeValue.innerHTML = `<span>${minutesValue}:${secondsValue}</span>`;
 };
 
 // For calculating moves
 
 const movesCounter = () => {
   movesCount += 1;
-  moves.innerHTML = `<span>Moves:</span>${movesCount}`;
+  moves.innerHTML = `<span>${movesCount}</span>`;
 };
 
 // Pick random objects from the items array
@@ -203,17 +204,56 @@ const matrixGenerator = (cardValues: any, size = 4) => {
           firstCard = card;
           // current card value becomes firstCardValue
           firstCardValue = card.getAttribute("data-card-value");
-        }
-      } else {
-        // increment moves since user selected second card
-        movesCounter();
-        secondCard = card;
+        } else {
+          // increment moves since user selected second card
+          movesCounter();
+          secondCard = card;
 
-        let secondCardValue = card.getAttribute("data-card-value");
+          let secondCardValue = card.getAttribute("data-card-value");
+          if (firstCardValue == secondCardValue) {
+            // if both cards match add matched class so these cards would be ignored next time
+            firstCard.classList.add("matched");
+            secondCard.classList.add("matched");
+            // set firstCard to false since next card would be first now
+            firstCard = false;
+            // increament win count as user found a correct match
+            winCount += 1;
+            // check if wincount == half of cardValues
+            if (winCount == Math.floor(cardValues.length / 2)) {
+              // where we handle the win UI
+              //stopGame();
+            } else {
+              // if the cards don't match
+              // flip the cards back to normal
+              let [tempFirst, tempSecond] = [firstCard, secondCard];
+              firstCard = false;
+              secondCard = false;
+              let delay = setTimeout(() => {
+                tempFirst.classList.remove("flipped");
+                tempSecond.classList.remove("flipped");
+              }, 900);
+            }
+          }
+        }
       }
     });
   });
 };
+
+// Start game
+startButton.addEventListener("click", () => {
+  movesCount = 0;
+  //time = 0;
+  // controls and buttons visibility
+  startScreen.classList.add("hide");
+  gameContainer.classList.remove("hide");
+
+  // start timer
+  interval = setInterval(timeGenerator, 1000);
+  // initial moves
+  moves.innerHTML = `<span>${movesCount}</span> `;
+  initializer();
+});
 
 // Initialize values and func calls
 
@@ -224,4 +264,4 @@ const initializer = () => {
   matrixGenerator(cardValues);
 };
 
-initializer();
+// Stop game
