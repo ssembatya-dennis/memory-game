@@ -1,85 +1,3 @@
-// 1. Player
-interface Player {
-  id: number;
-  name: string;
-  score: number;
-}
-
-// 2. Card
-interface Card {
-  id: number;
-  value: string;
-  isFaceUp: boolean;
-}
-
-// 3. Grid
-interface Grid {
-  rows: number;
-  columns: number;
-  cards: Card[][];
-}
-
-// 4. Pair
-interface Pair {
-  card1: Card;
-  card2: Card;
-}
-
-// 5. Turn
-interface Turn {
-  player: Player;
-  selectedCards: Card[];
-}
-
-// 6. Score
-type Score = { [playerId: number]: number };
-
-// Optional: Game state
-interface GameState {
-  players: Player[];
-  grid: Grid;
-  currentPlayerIndex: number;
-  turns: Turn[];
-  scores: Score;
-}
-
-abstract class MemoryGame {
-  protected gameState: GameState;
-
-  constructor(players: Player[], rows: number, columns: number) {
-    this.gameState = {
-      players,
-      grid: this.createGrid(rows, columns),
-      currentPlayerIndex: 0,
-      turns: [],
-      scores: players.reduce((acc, player) => ({ ...acc, [player.id]: 0 }), {}),
-    };
-  }
-
-  protected abstract createGrid(rows: number, columns: number): Grid;
-
-  protected abstract isPair(card1: Card, card2: Card): boolean;
-
-  protected abstract updateScore(playerId: number): void;
-
-  // Public methods to interact with the game state, such as flipping cards, getting the current player, etc.
-  flipCard(row: number, column: number): void {
-    // ...
-  }
-
-  getCurrentPlayer(): Player {
-    return this.gameState.players[this.gameState.currentPlayerIndex];
-  }
-
-  getScores(): Score {
-    return this.gameState.scores;
-  }
-
-  isGameOver(): any {
-    return this.gameState.scores;
-  }
-}
-
 // From source
 const moves = document.getElementById("move-count")!;
 const timeValue = document.getElementById("time")!;
@@ -93,9 +11,9 @@ const controls = document.querySelector(".game-controls");
 
 let cards;
 let interval;
-let firstCardValue: any;
-let firstCard: any = false;
-let secondCard: any = false;
+let firstCardValue: HTMLAllCollection;
+let firstCard: any = null;
+let secondCard: any = null;
 
 // Items array
 const items = [
@@ -171,16 +89,16 @@ const matrixGenerator = (cardValues: any, size = 4) => {
   for (let i = 0; i < size * size; i++) {
     /* 
       Create Cards
-      before => front side (contains question mark)
-      after => back side (contains actual image);
+      => front side (contains actual icon or a numeric)
+      => back side (contains a background color);
       data-card-value is a custom attribute which stores
       the name of the cards to match later
     */
     gameBoard.innerHTML += `
-                          <div class="card-container data-card-value="${cardValues[i]}">
+                          <div class="card-container" data-card-value="${cardValues[i].name}">
                             <div class="card-back"></div>
                             <div class="card-front">
-                              <div class="icon ${cardValues[i].icon} "></div
+                              <div class="icon ${cardValues[i].icon}"></div>
                             </div>
                           </div>
                         `;
@@ -215,7 +133,7 @@ const matrixGenerator = (cardValues: any, size = 4) => {
             firstCard.classList.add("matched");
             secondCard.classList.add("matched");
             // set firstCard to false since next card would be first now
-            firstCard = false;
+            firstCard = card;
             // increament win count as user found a correct match
             winCount += 1;
             // check if wincount == half of cardValues
@@ -226,9 +144,11 @@ const matrixGenerator = (cardValues: any, size = 4) => {
               // if the cards don't match
               // flip the cards back to normal
               let [tempFirst, tempSecond] = [firstCard, secondCard];
-              firstCard = false;
-              secondCard = false;
+              console.log(tempFirst, tempSecond);
+              // firstCard = false;
+              // secondCard = false;
               let delay = setTimeout(() => {
+                // console.log(tempFirst, tempSecond);
                 tempFirst.classList.remove("flipped");
                 tempSecond.classList.remove("flipped");
               }, 900);
@@ -260,7 +180,6 @@ startButton.addEventListener("click", () => {
 const initializer = () => {
   winCount = 0;
   let cardValues = generateRandom();
-  console.log(cardValues);
   matrixGenerator(cardValues);
 };
 
