@@ -11,7 +11,8 @@ const controls = document.querySelector(".game-controls");
 
 let cards;
 let interval;
-let firstCardValue: HTMLAllCollection;
+let firstCardValue: any = null;
+let secondCardValue: any = null;
 let firstCard: any = null;
 let secondCard: any = null;
 
@@ -111,51 +112,19 @@ const matrixGenerator = (cardValues: any, size = 4) => {
   cards = document.querySelectorAll(".card-container" as any);
   cards.forEach((card) => {
     card.addEventListener("click", () => {
-      // If selected card is not matched yet then only
-      // run (i.e already matched card when clicked would be ignored)
       if (!card.classList.contains("matched")) {
-        // flip the clicked card
         card.classList.add("flipped");
-        // if it's the first card (!first card since the first card is innitially false)
-        if (!firstCard) {
-          // so current card will become first card
-          firstCard = card;
-          // current card value becomes firstCardValue
-          firstCardValue = card.getAttribute("data-card-value");
-        } else {
-          // increment moves since user selected second card
-          movesCounter();
-          secondCard = card;
-
-          let secondCardValue = card.getAttribute("data-card-value");
-          if (firstCardValue == secondCardValue) {
-            // if both cards match add matched class so these cards would be ignored next time
-            firstCard.classList.add("matched");
-            secondCard.classList.add("matched");
-            // set firstCard to false since next card would be first now
-            firstCard = card;
-            // increament win count as user found a correct match
-            winCount += 1;
-            // check if wincount == half of cardValues
-            if (winCount == Math.floor(cardValues.length / 2)) {
-              // where we handle the win UI
-              //stopGame();
-            } else {
-              // if the cards don't match
-              // flip the cards back to normal
-              let [tempFirst, tempSecond] = [firstCard, secondCard];
-              console.log(tempFirst, tempSecond);
-              // firstCard = false;
-              // secondCard = false;
-              let delay = setTimeout(() => {
-                // console.log(tempFirst, tempSecond);
-                tempFirst.classList.remove("flipped");
-                tempSecond.classList.remove("flipped");
-              }, 900);
-            }
-          }
-        }
+        firstCard = card;
+        firstCardValue = card.getAttribute("data-card-value");
+        // console.log(firstCard);
       }
+      if (!card.classList.contains("flipped")) {
+        card.classList.add("flipped");
+        secondCard = card;
+        secondCardValue = card.getAttribute("data-card-value");
+        console.log(secondCard);
+      }
+      // console.log(secondCard);
     });
   });
 };
