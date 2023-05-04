@@ -138,7 +138,7 @@ h3 {
 }
 
 .menu-button-select {
-  width: 256px;
+  width: 25.6rem;
   height: 5.2rem;
   padding: 1.1rem auto 0.9rem;
   background: var(--color-primary-light-2);
@@ -150,7 +150,7 @@ h3 {
 }
 
 .menu-button-select--num {
-  width: 119px;
+  width: 11.9rem;
   height: 5.2rem;
   padding: 1.1rem auto 0.9rem;
   background: var(--color-primary-light-2);
@@ -162,7 +162,7 @@ h3 {
 }
 
 .menu-button--small {
-  width: 127px;
+  width: 12.7rem;
   height: 5.2rem;
   padding: 1.3rem auto 1.4rem;
   background: var(--color-secondary);
@@ -175,7 +175,7 @@ h3 {
 }
 
 .btn-secondary {
-  width: 149px;
+  width: 14.9rem;
   height: 5.2rem;
   padding: 1.3rem auto 1.4rem;
   background: #dfe7ec;
@@ -273,10 +273,9 @@ h3 {
 
 .game-container {
   width: 100%;
-  height: 100%;
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  padding: 6.7rem;
   background-color: var(--color-gray-light-1);
 }
 
@@ -286,21 +285,20 @@ h3 {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  margin-top: 3rem;
+  margin-top: 1rem;
 }
 
 .game-board {
-  width: 532px;
-  height: 532px;
+  width: 50%;
+  height: 100%;
   display: grid;
-  gap: 2rem;
-  text-align: center;
+  gap: 1rem;
 }
 
 .stats-container {
-  width: 540px;
+  width: 50%;
   height: auto;
-  margin: 2rem auto;
+  margin: 1.5rem auto;
   display: flex;
   justify-content: space-between;
 }
@@ -309,8 +307,8 @@ h3 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 255px;
-  height: 72px;
+  width: 25.5rem;
+  height: 7.2rem;
 
   background: #dfe7ec;
   border-radius: 10px;
@@ -328,19 +326,20 @@ h3 {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin: 2rem 10rem 0;
 }
 
 .card-container {
   position: relative;
-  width: 11.8rem;
-  height: 11.8rem;
+  width: 11rem;
+  height: 11rem;
   cursor: pointer;
 }
 
 .card-back,
 .card-front {
   position: absolute;
-  border-radius: 59px;
+  border-radius: 5.9rem;
   width: 100%;
   height: 100%;
   display: flex;
@@ -366,9 +365,19 @@ h3 {
 .card-container.flipped .card-front {
   transform: rotateY(0deg);
 }
+
+@media (min-width: 112.5em) {
+  html {
+    font-size: 75%; /* 1rem = 12px/16px = 75% */
+  }
+}
+
 @media (max-width: 75em) {
   html {
     font-size: 56.25%; /*1rem = 9px/16px = 56.25% */
+  }
+  .stats-container {
+    width: 65%;
   }
 }
 
@@ -390,14 +399,17 @@ h3 {
   }
 }
 
-@media (max-width: 23.45em) {
-  html {
-    font-size: 31.25%; /*1rem = 5px/16px = 31.25% */
+@media (max-width: 37.5em) {
+  .game-controls {
+    margin: 1rem 5rem 0;
+  }
+  .game-board {
+    width: 80%;
   }
 }
 
-@media (min-width: 112.5em) {
+@media (max-width: 23.45em) {
   html {
-    font-size: 75%; /* 1rem = 12px/16px = 75% */
+    font-size: 31.25%; /*1rem = 5px/16px = 31.25% */
   }
 }
