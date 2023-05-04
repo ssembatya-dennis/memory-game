@@ -64,13 +64,12 @@ const movesCounter = () => {
 
 // Pick random objects from the items array
 const generateRandom = (size = 4) => {
-  // temporary array
   let tempArray = [...items];
-  // initializes cardValues array
+
   let cardValues = [];
   // size should be double (4 * 4 matrix) / 2 since pairs of objects would exist
   size = (size * size) / 2;
-  // Random object selection
+
   for (let i = 0; i < size; i++) {
     const randomIndex = Math.floor(Math.random() * tempArray.length);
     cardValues.push(tempArray[randomIndex]);
@@ -88,13 +87,6 @@ const matrixGenerator = (cardValues: any, size = 4) => {
   // simple shuffle
   cardValues.sort(() => Math.random() - 0.5);
   for (let i = 0; i < size * size; i++) {
-    /* 
-      Create Cards
-      => front side (contains actual icon or a numeric)
-      => back side (contains a background color);
-      data-card-value is a custom attribute which stores
-      the name of the cards to match later
-    */
     gameBoard.innerHTML += `
                           <div class="card-container" data-card-value="${cardValues[i].name}">
                             <div class="card-back"></div>
@@ -114,17 +106,40 @@ const matrixGenerator = (cardValues: any, size = 4) => {
     card.addEventListener("click", () => {
       if (!card.classList.contains("matched")) {
         card.classList.add("flipped");
-        firstCard = card;
-        firstCardValue = card.getAttribute("data-card-value");
-        // console.log(firstCard);
+
+        if (!firstCard) {
+          firstCard = card;
+          firstCardValue = card.getAttribute("data-card-value");
+        } else {
+          movesCounter();
+          secondCard = card;
+
+          secondCardValue = card.getAttribute("data-card-value");
+          if (firstCardValue == secondCardValue) {
+            firstCard.classList.add("matched");
+            secondCard.classList.add("matched");
+          }
+          if (winCount == Math.floor(cardValues.length / 2)) {
+            // where we handle the win UI
+            //stopGame();
+          } else {
+            let [tempFirst, tempSecond] = [firstCard, secondCard];
+            let tempFirstValue = tempFirst.getAttribute("data-card-value");
+            let tempSecondValue = tempSecond.getAttribute("data-card-value");
+            console.log(tempFirst, tempSecond);
+            if (tempFirstValue !== tempSecondValue) {
+              setTimeout(() => {
+                tempFirst.classList.remove("flipped");
+                tempSecond.classList.remove("flipped");
+              }, 900);
+            } else {
+              tempFirst.classList.add("flipped");
+              tempSecond.classList.add("flipped");
+            }
+            firstCard = null;
+          }
+        }
       }
-      if (!card.classList.contains("flipped")) {
-        card.classList.add("flipped");
-        secondCard = card;
-        secondCardValue = card.getAttribute("data-card-value");
-        console.log(secondCard);
-      }
-      // console.log(secondCard);
     });
   });
 };
