@@ -28,6 +28,30 @@ const gameBoardEl: ContainerElement = document.querySelector(
 const controlsContainerEl: ContainerElement = document.querySelector(
   ".game-controls"
 ) as HTMLDivElement;
+const numberThemeButton: ButtonElement = document.getElementById(
+  "number_theme"
+) as HTMLButtonElement;
+const iconThemeButton: ButtonElement = document.getElementById(
+  "icons_theme"
+) as HTMLButtonElement;
+const playerButtonOption1: ButtonElement = document.getElementById(
+  "player_option-1"
+) as HTMLButtonElement;
+const playerButtonOption2: ButtonElement = document.getElementById(
+  "player_option-2"
+) as HTMLButtonElement;
+const playerButtonOption3: ButtonElement = document.getElementById(
+  "player_option-3"
+) as HTMLButtonElement;
+const playerButtonOption4: ButtonElement = document.getElementById(
+  "player_option-4"
+) as HTMLButtonElement;
+const gridBtnOption1: ButtonElement = document.getElementById(
+  "grid_option-1"
+) as HTMLButtonElement;
+const gridBtnOption2: ButtonElement = document.getElementById(
+  "grid_option-2"
+) as HTMLButtonElement;
 
 export {
   movesDisplayEl,
@@ -39,4 +63,12 @@ export {
   gameContainerEl,
   gameBoardEl,
   controlsContainerEl,
+  numberThemeButton,
+  iconThemeButton,
+  playerButtonOption1,
+  playerButtonOption2,
+  playerButtonOption3,
+  playerButtonOption4,
+  gridBtnOption1,
+  gridBtnOption2,
 };

@@ -1,3 +1,5 @@
+import { buildUI } from "./ui";
+
 type GameState = {
   elapsedTimeInMilliseconds: number;
   numberOfMoves: number;
@@ -16,7 +18,7 @@ const DEFAULT_STATE: GameState = {
   currentPlayer: 1,
   numberOfPlayers: 1,
   gameTheme: "icons",
-  gridSize: 6,
+  gridSize: 4,
   flippedCards: [],
   gameState: "start",
   winner: null,
@@ -36,7 +38,12 @@ function setState(newStateSlice: Partial<GameState>) {
   }
 
   state = newState;
+  buildUI();
   return true;
 }
 
-export { state, setState };
+function resetState() {
+  setState(DEFAULT_STATE);
+}
+
+export { state, setState, resetState };
