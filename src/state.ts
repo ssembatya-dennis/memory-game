@@ -6,6 +6,8 @@ type GameState = {
   gameTheme: "icons" | "numbers";
   gridSize: number;
   flippedCards: string[];
+  gameState: "start" | "ongoing" | "paused" | "completed";
+  winner: number | null;
 };
 
 const DEFAULT_STATE: GameState = {
@@ -16,6 +18,8 @@ const DEFAULT_STATE: GameState = {
   gameTheme: "icons",
   gridSize: 6,
   flippedCards: [],
+  gameState: "start",
+  winner: null,
 };
 
 let state: GameState = DEFAULT_STATE;
