@@ -19,4 +19,11 @@ module.exports = {
     filename: "script.js",
     path: path.resolve(__dirname, "public", "static", "bundle"),
   },
+  devServer: {
+    static: {
+      directory: path.join(__dirname, "public"),
+    },
+    compress: true,
+    port: 3000,
+  },
 };
