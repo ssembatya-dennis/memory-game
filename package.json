@@ -10,7 +10,7 @@
     "webpack-cli": "^5.0.1"
   },
   "scripts": {
-    "start": "webpack --watch",
+    "start": "webpack serve",
     "build": "webpack",
     "test": "echo \"Error: no test specified \" && exit 1 "
   },
@@ -30,5 +30,8 @@
   "bugs": {
     "url": "https://github.com/ssembatya-dennis/memory-game/issues"
   },
-  "homepage": "https://github.com/ssembatya-dennis/memory-game#readme"
+  "homepage": "https://github.com/ssembatya-dennis/memory-game#readme",
+  "devDependencies": {
+    "webpack-dev-server": "^4.13.3"
+  }
 }
