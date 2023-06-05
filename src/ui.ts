@@ -1,7 +1,9 @@
 import {
   startScreenDisplayEl,
   gameContainerEl,
+  newGameButton,
   startButton,
+  reStartButton,
   numberThemeButton,
   iconThemeButton,
   playerButtonOption1,
@@ -29,6 +31,7 @@ export function startGame() {
 }
 
 function newGame() {
+  console.log("clicked");
   resetState();
 }
 
@@ -83,6 +86,16 @@ export function attachGameSettingsControlListeners() {
   // Add Start Button listeners
   startButton?.addEventListener("click", () => {
     startGame();
+  });
+
+  // Add reStart Button listeners
+  reStartButton?.addEventListener("click", () => {
+    restartGame();
+  });
+
+  // Add newGame button listeners
+  newGameButton?.addEventListener("click", () => {
+    newGame();
   });
 }
 
