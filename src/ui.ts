@@ -1,6 +1,7 @@
 import {
   startScreenDisplayEl,
   gameContainerEl,
+  startButton,
   numberThemeButton,
   iconThemeButton,
   playerButtonOption1,
@@ -71,11 +72,18 @@ export function attachGameSettingsControlListeners() {
     );
   });
 
+  // Add Grid Button Listeners
   gridBtnOption1?.addEventListener("click", () => setGridSize(4));
   gridBtnOption2?.addEventListener("click", () => setGridSize(6));
 
+  // Add Theme Button Listeners
   numberThemeButton?.addEventListener("click", () => toggleTheme("numbers"));
   iconThemeButton?.addEventListener("click", () => toggleTheme("icons"));
+
+  // Add Start Button listeners
+  startButton?.addEventListener("click", () => {
+    startGame();
+  });
 }
 
 export function buildUI() {
