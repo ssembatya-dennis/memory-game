@@ -2,7 +2,7 @@ type GameState = {
   theme: "icons" | "numbers";
   playerOptions: number;
   gridSize: number;
-  time: number;
+  elapsedTimeMicroSeconds: number;
   moves: number;
   winner: "winner" | null;
   gameState: "start" | "ongoing" | "paused" | "end";
@@ -12,20 +12,21 @@ const DEFAULT_STATE: GameState = {
   theme: "icons",
   playerOptions: 1,
   gridSize: 6,
-  time: 0,
+  elapsedTimeMicroSeconds: 0,
   moves: 0,
   winner: null,
   gameState: "start",
 };
 
-let state: Partial<GameState> = DEFAULT_STATE;
+let state = DEFAULT_STATE;
 
 function setState(newState: Partial<GameState>) {
-  if (newState == state) {
+  let newStateSlice = { ...newState, ...state };
+  if (JSON.stringify(newStateSlice) === JSON.stringify(state)) {
     // Do nothing
     return false;
   } else {
-    state = newState;
+    state = newStateSlice;
     return true;
   }
 }
