@@ -3,7 +3,7 @@ import {
   startScreenContainerEl,
   gameContainerEl,
 } from "./elements";
-import { setState } from "./state";
+import { setState, state } from "./state";
 
 function startGame() {
   setState({
@@ -12,7 +12,11 @@ function startGame() {
 }
 
 export function buildUI() {
-  if (setState({ gameState: "ongoing" })) {
+  updateGameScreen();
+}
+
+export function updateGameScreen() {
+  if (state.gameState === "ongoing") {
     startScreenContainerEl?.classList.add("hide");
     gameContainerEl?.classList.remove("hide");
   } else {

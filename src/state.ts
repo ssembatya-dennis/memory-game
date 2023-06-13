@@ -1,4 +1,4 @@
-// import { buildUI } from "./ui";
+import { buildUI } from "./ui";
 
 type GameState = {
   elapsedTimeInMilliseconds: number;
@@ -38,7 +38,7 @@ function setState(newStateSlice: Partial<GameState>) {
   }
 
   state = newState;
-  // buildUI();
+  buildUI();
   return true;
 }
 
