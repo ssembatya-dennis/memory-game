@@ -187,6 +187,10 @@ h3 {
   background: var(--color-primary-light-1);
 }
 
+.menu-button-active {
+  background: var(--color-primary-light-1);
+}
+
 /* ICONS */
 
 .football::before {

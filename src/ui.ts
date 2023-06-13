@@ -34,13 +34,13 @@ function updateGameScreen() {
 
 function updateGameTheme() {
   if (state.gameTheme === "numbers") {
-    numberThemeButtonEl?.classList.add("menu-button-select:hover");
-    iconThemeButtonEl?.classList.remove("menu-button-select:hover");
+    numberThemeButtonEl?.classList.add("menu-button-active");
+    iconThemeButtonEl?.classList.remove("menu-button-active");
   }
 
   if (state.gameTheme === "icons") {
-    numberThemeButtonEl?.classList.remove("menu-button-select:hover");
-    iconThemeButtonEl?.classList.add("menu-button-select:hover");
+    numberThemeButtonEl?.classList.remove("menu-button-active");
+    iconThemeButtonEl?.classList.add("menu-button-active");
   }
 }
 
