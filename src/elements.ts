@@ -34,6 +34,18 @@ const numberThemeButtonEl: ButtonElement = document.getElementById(
 const iconThemeButtonEl: ButtonElement = document.getElementById(
   "icon_theme"
 ) as HTMLButtonElement;
+const playerOptionButton1El: ButtonElement = document.getElementById(
+  "player_Opt_1"
+) as HTMLButtonElement;
+const playerOptionButton2El: ButtonElement = document.getElementById(
+  "player_Opt_2"
+) as HTMLButtonElement;
+const playerOptionButton3El: ButtonElement = document.getElementById(
+  "player_Opt_3"
+) as HTMLButtonElement;
+const playerOptionButton4El: ButtonElement = document.getElementById(
+  "player_Opt_4"
+) as HTMLButtonElement;
 export {
   moveContainerEl,
   timeContainerEl,
@@ -46,4 +58,8 @@ export {
   controlsContainerEl,
   numberThemeButtonEl,
   iconThemeButtonEl,
+  playerOptionButton1El,
+  playerOptionButton2El,
+  playerOptionButton3El,
+  playerOptionButton4El,
 };

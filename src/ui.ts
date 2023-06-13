@@ -4,6 +4,10 @@ import {
   gameContainerEl,
   numberThemeButtonEl,
   iconThemeButtonEl,
+  playerOptionButton1El,
+  playerOptionButton2El,
+  playerOptionButton3El,
+  playerOptionButton4El,
 } from "./elements";
 import { setState, state } from "./state";
 
@@ -13,13 +17,18 @@ function startGame() {
   });
 }
 
-function toggleTheme(theme: "icons" | "numbers") {
+function setTheme(theme: "icons" | "numbers") {
   setState({ gameTheme: theme });
+}
+
+function setNumberOfPlayers(numberOfPlayers: number) {
+  setState({ numberOfPlayers: numberOfPlayers });
 }
 
 export function buildUI() {
   updateGameScreen();
   updateGameTheme();
+  updateNumberOfPlayers();
 }
 
 function updateGameScreen() {
@@ -44,10 +53,40 @@ function updateGameTheme() {
   }
 }
 
+function updateNumberOfPlayers() {
+  const activeNumberOfPlayer = state.numberOfPlayers;
+
+  const playerOptions = [
+    playerOptionButton1El,
+    playerOptionButton2El,
+    playerOptionButton3El,
+    playerOptionButton4El,
+  ];
+
+  playerOptions.forEach((playerOption, playerIndex) => {
+    let activeNumberOfPlayerIndex = activeNumberOfPlayer - 1;
+    if (playerIndex === activeNumberOfPlayerIndex) {
+      playerOption?.classList.add("menu-button-active");
+    } else {
+      playerOption?.classList.remove("menu-button-active");
+    }
+  });
+}
+
 export function attachEventListeners() {
   // add theme Btns event listeners
-  numberThemeButtonEl?.addEventListener("click", () => toggleTheme("numbers"));
-  iconThemeButtonEl?.addEventListener("click", () => toggleTheme("icons"));
+  numberThemeButtonEl?.addEventListener("click", () => setTheme("numbers"));
+  iconThemeButtonEl?.addEventListener("click", () => setTheme("icons"));
+
+  // add numberOfPlayers event listerners
+  [
+    playerOptionButton1El,
+    playerOptionButton2El,
+    playerOptionButton3El,
+    playerOptionButton4El,
+  ].forEach((player, index) => {
+    player?.addEventListener("click", () => setNumberOfPlayers(index + 1));
+  });
 
   // add start Btn event listeners
   startButtonEl?.addEventListener("click", () => {
