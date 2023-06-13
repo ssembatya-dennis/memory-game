@@ -46,6 +46,12 @@ const playerOptionButton3El: ButtonElement = document.getElementById(
 const playerOptionButton4El: ButtonElement = document.getElementById(
   "player_Opt_4"
 ) as HTMLButtonElement;
+const gridSize4ButtonEl: ButtonElement = document.getElementById(
+  "grid_size_4"
+) as HTMLButtonElement;
+const gridSize6ButtonEl: ButtonElement = document.getElementById(
+  "grid_size_6"
+) as HTMLButtonElement;
 export {
   moveContainerEl,
   timeContainerEl,
@@ -62,4 +68,6 @@ export {
   playerOptionButton2El,
   playerOptionButton3El,
   playerOptionButton4El,
+  gridSize4ButtonEl,
+  gridSize6ButtonEl,
 };
