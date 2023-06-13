@@ -1,31 +1,49 @@
+// import { buildUI } from "./ui";
+
 type GameState = {
-  theme: "icons" | "numbers";
-  playerOptions: number;
+  elapsedTimeInMilliseconds: number;
+  numberOfMoves: number;
+  currentPlayer: number;
+  numberOfPlayers: number;
+  gameTheme: "icons" | "numbers";
   gridSize: number;
-  time: number;
-  moves: number;
-  winner: "winner" | null;
-  gameState: "start" | "ongoing" | "paused" | "end";
+  flippedCards: string[];
+  gameState: "start" | "ongoing" | "paused" | "completed";
+  winner: number | null;
 };
 
 const DEFAULT_STATE: GameState = {
-  theme: "icons",
-  playerOptions: 1,
-  gridSize: 6,
-  time: 0,
-  moves: 0,
-  winner: null,
+  elapsedTimeInMilliseconds: 0,
+  numberOfMoves: 0,
+  currentPlayer: 1,
+  numberOfPlayers: 1,
+  gameTheme: "icons",
+  gridSize: 4,
+  flippedCards: [],
   gameState: "start",
+  winner: null,
 };
 
-let state: Partial<GameState> = DEFAULT_STATE;
+let state: GameState = DEFAULT_STATE;
 
-function setState(newState: Partial<GameState>) {
-  if (newState == state) {
-    // Do nothing
+function setState(newStateSlice: Partial<GameState>) {
+  const newState: GameState = {
+    ...state,
+    ...newStateSlice,
+  };
+
+  if (JSON.stringify(state) === JSON.stringify(newState)) {
+    // nothing has changed.
     return false;
-  } else {
-    state = newState;
-    return true;
   }
+
+  state = newState;
+  // buildUI();
+  return true;
 }
+
+function resetState() {
+  setState(DEFAULT_STATE);
+}
+
+export { state, setState, resetState };
