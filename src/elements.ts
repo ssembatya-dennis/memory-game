@@ -28,7 +28,12 @@ const gameBoardContainerEl: DivElement = document.querySelector(
 const controlsContainerEl: DivElement = document.querySelector(
   ".game-controls"
 ) as HTMLDivElement;
-
+const numberThemeButtonEl: ButtonElement = document.getElementById(
+  "number_theme"
+) as HTMLButtonElement;
+const iconThemeButtonEl: ButtonElement = document.getElementById(
+  "icon_theme"
+) as HTMLButtonElement;
 export {
   moveContainerEl,
   timeContainerEl,
@@ -39,4 +44,6 @@ export {
   gameContainerEl,
   gameBoardContainerEl,
   controlsContainerEl,
+  numberThemeButtonEl,
+  iconThemeButtonEl,
 };
