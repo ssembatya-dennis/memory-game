@@ -1,120 +1,158 @@
 import {
-  startButtonEl,
-  startScreenContainerEl,
+  startScreenDisplayEl,
   gameContainerEl,
-  numberThemeButtonEl,
-  iconThemeButtonEl,
-  playerOptionButton1El,
-  playerOptionButton2El,
-  playerOptionButton3El,
-  playerOptionButton4El,
-  gridSize4ButtonEl,
-  gridSize6ButtonEl,
+  newGameButton,
+  startButton,
+  reStartButton,
+  numberThemeButton,
+  iconThemeButton,
+  playerButtonOption1,
+  playerButtonOption2,
+  playerButtonOption3,
+  playerButtonOption4,
+  gridBtnOption1,
+  gridBtnOption2,
 } from "./elements";
-import { setState, state } from "./state";
+import { state, setState, resetState } from "./state";
 
-function startGame() {
+const ICON_CARD_TEMPLATE = `
+                          <div class="card-container" id="{{CARD_ID}}" data-card-value="{{CARD_ID}}">
+                            <div class="card-back"></div>
+                            <div class="card-front">
+                              <div class="icon {{CARD_ICON_NAME}}"></div>
+                            </div>
+                          </div>
+                        `;
+
+export function startGame() {
   setState({
     gameState: "ongoing",
   });
 }
 
-function setTheme(theme: "icons" | "numbers") {
-  setState({ gameTheme: theme });
+function newGame() {
+  resetState();
 }
 
-function setNumberOfPlayers(numberOfPlayers: number) {
-  setState({ numberOfPlayers: numberOfPlayers });
+function restartGame() {
+  setState({
+    flippedCards: [],
+    elapsedTimeInMilliseconds: 0,
+    winner: null,
+    gameState: "ongoing",
+  });
 }
 
-function setGridSize(gridSize: number) {
-  setState({ gridSize: gridSize });
+function toggleTheme(newTheme: "icons" | "numbers") {
+  setState({
+    gameTheme: newTheme,
+  });
+}
+
+function setGridSize(newGridSize: number) {
+  setState({
+    gridSize: newGridSize,
+  });
+}
+
+function setNumberOfPlayers(newNumber: number) {
+  setState({
+    numberOfPlayers: newNumber,
+  });
+}
+
+export function attachGameSettingsControlListeners() {
+  // Add Player Button Listeners
+  [
+    playerButtonOption1,
+    playerButtonOption2,
+    playerButtonOption3,
+    playerButtonOption4,
+  ].forEach((playerButton, index) => {
+    playerButton?.addEventListener("click", () =>
+      setNumberOfPlayers(index + 1)
+    );
+  });
+
+  // Add Grid Button Listeners
+  gridBtnOption1?.addEventListener("click", () => setGridSize(4));
+  gridBtnOption2?.addEventListener("click", () => setGridSize(6));
+
+  // Add Theme Button Listeners
+  numberThemeButton?.addEventListener("click", () => toggleTheme("numbers"));
+  iconThemeButton?.addEventListener("click", () => toggleTheme("icons"));
+
+  // Add Start Button listeners
+  startButton?.addEventListener("click", () => {
+    startGame();
+  });
+
+  // Add reStart Button listeners
+  reStartButton?.addEventListener("click", () => {
+    restartGame();
+  });
+
+  // Add newGame button listeners
+  newGameButton?.addEventListener("click", () => {
+    newGame();
+  });
 }
 
 export function buildUI() {
   updateGameScreen();
   if (state.gameState === "start") {
-    updateGameTheme();
-    updateNumberOfPlayers();
-    updateGridSize();
+    updateThemeButtons();
+    updatePlayerNumberButtons();
+    updateGridSizeButtons();
   }
 }
 
 function updateGameScreen() {
   if (state.gameState === "ongoing") {
-    startScreenContainerEl?.classList.add("hide");
+    startScreenDisplayEl?.classList.add("hide");
     gameContainerEl?.classList.remove("hide");
-  } else {
-    startScreenContainerEl?.classList.remove("hide");
+  } else if (state.gameState === "start") {
+    startScreenDisplayEl?.classList.remove("hide");
     gameContainerEl?.classList.add("hide");
   }
 }
 
-function updateGameTheme() {
-  if (state.gameTheme === "numbers") {
-    numberThemeButtonEl?.classList.add("menu-button-active");
-    iconThemeButtonEl?.classList.remove("menu-button-active");
-  }
-
+function updateThemeButtons() {
   if (state.gameTheme === "icons") {
-    numberThemeButtonEl?.classList.remove("menu-button-active");
-    iconThemeButtonEl?.classList.add("menu-button-active");
+    numberThemeButton?.classList.remove("menu-button-active");
+    iconThemeButton?.classList.add("menu-button-active");
+  } else if (state.gameTheme === "numbers") {
+    numberThemeButton?.classList.add("menu-button-active");
+    iconThemeButton?.classList.remove("menu-button-active");
   }
 }
 
-function updateGridSize() {
-  if (state.gridSize === 4) {
-    gridSize4ButtonEl?.classList.add("menu-button-active");
-    gridSize6ButtonEl?.classList.remove("menu-button-active");
-  }
+function updatePlayerNumberButtons() {
+  const activeCardNumber = state.numberOfPlayers;
 
-  if (state.gridSize === 6) {
-    gridSize4ButtonEl?.classList.remove("menu-button-active");
-    gridSize6ButtonEl?.classList.add("menu-button-active");
-  }
-}
-
-function updateNumberOfPlayers() {
-  const activeNumberOfPlayer = state.numberOfPlayers;
-
-  const playerOptions = [
-    playerOptionButton1El,
-    playerOptionButton2El,
-    playerOptionButton3El,
-    playerOptionButton4El,
+  const cards = [
+    playerButtonOption1,
+    playerButtonOption2,
+    playerButtonOption3,
+    playerButtonOption4,
   ];
 
-  playerOptions.forEach((playerOption, playerIndex) => {
-    let activeNumberOfPlayerIndex = activeNumberOfPlayer - 1;
-    if (playerIndex === activeNumberOfPlayerIndex) {
-      playerOption?.classList.add("menu-button-active");
+  const activeCardIndex = activeCardNumber - 1;
+  cards.forEach((card, index) => {
+    if (index === activeCardIndex) {
+      card?.classList.add("menu-button-active");
     } else {
-      playerOption?.classList.remove("menu-button-active");
+      card?.classList.remove("menu-button-active");
     }
   });
 }
 
-export function attachEventListeners() {
-  // add theme Btns event listeners
-  numberThemeButtonEl?.addEventListener("click", () => setTheme("numbers"));
-  iconThemeButtonEl?.addEventListener("click", () => setTheme("icons"));
-
-  // add numberOfPlayers event listerners
-  [
-    playerOptionButton1El,
-    playerOptionButton2El,
-    playerOptionButton3El,
-    playerOptionButton4El,
-  ].forEach((player, index) => {
-    player?.addEventListener("click", () => setNumberOfPlayers(index + 1));
-  });
-
-  // add gridSize Btns event listerners
-  gridSize4ButtonEl?.addEventListener("click", () => setGridSize(4));
-  gridSize6ButtonEl?.addEventListener("click", () => setGridSize(6));
-
-  // add start Btn event listeners
-  startButtonEl?.addEventListener("click", () => {
-    startGame();
-  });
+function updateGridSizeButtons() {
+  if (state.gridSize === 4) {
+    gridBtnOption1?.classList.add("menu-button-active");
+    gridBtnOption2?.classList.remove("menu-button-active");
+  } else if (state.gridSize === 6) {
+    gridBtnOption1?.classList.remove("menu-button-active");
+    gridBtnOption2?.classList.add("menu-button-active");
+  }
 }

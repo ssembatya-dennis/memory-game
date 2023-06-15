@@ -7,16 +7,16 @@ const moveContainerEl: DivElement = document.getElementById(
 const timeContainerEl: DivElement = document.getElementById(
   "time"
 ) as HTMLDivElement;
-const startButtonEl: ButtonElement = document.getElementById(
+const startButton: ButtonElement = document.getElementById(
   "start"
 ) as HTMLButtonElement;
-const reStartButtonEl: ButtonElement = document.getElementById(
+const reStartButton: ButtonElement = document.getElementById(
   "restart-btn"
 ) as HTMLButtonElement;
-const newGameButtonEl: ButtonElement = document.getElementById(
+const newGameButton: ButtonElement = document.getElementById(
   "new-game"
 ) as HTMLButtonElement;
-const startScreenContainerEl: DivElement = document.querySelector(
+const startScreenDisplayEl: DivElement = document.querySelector(
   ".start-screen"
 ) as HTMLDivElement;
 const gameContainerEl: DivElement = document.querySelector(
@@ -28,46 +28,46 @@ const gameBoardContainerEl: DivElement = document.querySelector(
 const controlsContainerEl: DivElement = document.querySelector(
   ".game-controls"
 ) as HTMLDivElement;
-const numberThemeButtonEl: ButtonElement = document.getElementById(
+const numberThemeButton: ButtonElement = document.getElementById(
   "number_theme"
 ) as HTMLButtonElement;
-const iconThemeButtonEl: ButtonElement = document.getElementById(
+const iconThemeButton: ButtonElement = document.getElementById(
   "icon_theme"
 ) as HTMLButtonElement;
-const playerOptionButton1El: ButtonElement = document.getElementById(
+const playerButtonOption1: ButtonElement = document.getElementById(
   "player_Opt_1"
 ) as HTMLButtonElement;
-const playerOptionButton2El: ButtonElement = document.getElementById(
+const playerButtonOption2: ButtonElement = document.getElementById(
   "player_Opt_2"
 ) as HTMLButtonElement;
-const playerOptionButton3El: ButtonElement = document.getElementById(
+const playerButtonOption3: ButtonElement = document.getElementById(
   "player_Opt_3"
 ) as HTMLButtonElement;
-const playerOptionButton4El: ButtonElement = document.getElementById(
+const playerButtonOption4: ButtonElement = document.getElementById(
   "player_Opt_4"
 ) as HTMLButtonElement;
-const gridSize4ButtonEl: ButtonElement = document.getElementById(
+const gridBtnOption1: ButtonElement = document.getElementById(
   "grid_size_4"
 ) as HTMLButtonElement;
-const gridSize6ButtonEl: ButtonElement = document.getElementById(
+const gridBtnOption2: ButtonElement = document.getElementById(
   "grid_size_6"
 ) as HTMLButtonElement;
 export {
   moveContainerEl,
   timeContainerEl,
-  startButtonEl,
-  reStartButtonEl,
-  newGameButtonEl,
-  startScreenContainerEl,
+  startButton,
+  reStartButton,
+  newGameButton,
+  startScreenDisplayEl,
   gameContainerEl,
   gameBoardContainerEl,
   controlsContainerEl,
-  numberThemeButtonEl,
-  iconThemeButtonEl,
-  playerOptionButton1El,
-  playerOptionButton2El,
-  playerOptionButton3El,
-  playerOptionButton4El,
-  gridSize4ButtonEl,
-  gridSize6ButtonEl,
+  numberThemeButton,
+  iconThemeButton,
+  playerButtonOption1,
+  playerButtonOption2,
+  playerButtonOption3,
+  playerButtonOption4,
+  gridBtnOption1,
+  gridBtnOption2,
 };
