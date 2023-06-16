@@ -4,7 +4,7 @@ type ButtonElement = HTMLButtonElement | null;
 const moveContainerEl: DivElement = document.getElementById(
   "move-count"
 ) as HTMLDivElement;
-const timeContainerEl: DivElement = document.getElementById(
+const timeContainerEl: HTMLDivElement = document.getElementById(
   "time"
 ) as HTMLDivElement;
 const startButton: ButtonElement = document.getElementById(

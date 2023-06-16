@@ -1,5 +1,6 @@
 import { attachGameSettingsControlListeners } from "./ui";
 attachGameSettingsControlListeners();
+
 // // From source
 // const moves = document.getElementById("move-count")!;
 // const timeValue = document.getElementById("time")!;

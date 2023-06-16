@@ -1,6 +1,7 @@
 import {
   startScreenDisplayEl,
   gameContainerEl,
+  timeContainerEl,
   newGameButton,
   startButton,
   reStartButton,
@@ -14,6 +15,9 @@ import {
   gridBtnOption2,
 } from "./elements";
 import { state, setState, resetState } from "./state";
+
+let seconds = 0,
+  minutes = 0;
 
 const ICON_CARD_TEMPLATE = `
                           <div class="card-container" id="{{CARD_ID}}" data-card-value="{{CARD_ID}}">
@@ -111,6 +115,7 @@ function updateGameScreen() {
   if (state.gameState === "ongoing") {
     startScreenDisplayEl?.classList.add("hide");
     gameContainerEl?.classList.remove("hide");
+    setInterval(timeGenerator, 1000);
   } else if (state.gameState === "start") {
     startScreenDisplayEl?.classList.remove("hide");
     gameContainerEl?.classList.add("hide");
@@ -155,4 +160,18 @@ function updateGridSizeButtons() {
     gridBtnOption1?.classList.remove("menu-button-active");
     gridBtnOption2?.classList.add("menu-button-active");
   }
+}
+
+function timeGenerator() {
+  seconds += 1;
+
+  // minutes logic
+  if (seconds >= 60) {
+    minutes += 1;
+    seconds = 0;
+  }
+  // format time before displaying
+  let secondsValue = seconds < 10 ? `0${seconds}` : seconds;
+  let minutesValue = minutes < 10 ? `0${minutes}` : minutes;
+  return (timeContainerEl.innerHTML = `<span>${minutesValue}:${secondsValue}</span>`);
 }
