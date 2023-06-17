@@ -17,7 +17,8 @@ import {
 import { state, setState, resetState } from "./state";
 
 let seconds = 0,
-  minutes = 0;
+  minutes = 0,
+  timerId: any;
 
 const ICON_CARD_TEMPLATE = `
                           <div class="card-container" id="{{CARD_ID}}" data-card-value="{{CARD_ID}}">
@@ -89,11 +90,13 @@ export function attachGameSettingsControlListeners() {
   // Add Start Button listeners
   startButton?.addEventListener("click", () => {
     startGame();
+    timerId = setInterval(timeGenerator, 1000);
   });
 
   // Add reStart Button listeners
   reStartButton?.addEventListener("click", () => {
     restartGame();
+    clearInterval(timerId);
   });
 
   // Add newGame button listeners
@@ -115,7 +118,6 @@ function updateGameScreen() {
   if (state.gameState === "ongoing") {
     startScreenDisplayEl?.classList.add("hide");
     gameContainerEl?.classList.remove("hide");
-    setInterval(timeGenerator, 1000);
   } else if (state.gameState === "start") {
     startScreenDisplayEl?.classList.remove("hide");
     gameContainerEl?.classList.add("hide");
