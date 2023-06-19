@@ -15,19 +15,11 @@ import {
   gridBtnOption2,
 } from "./elements";
 import { state, setState, resetState } from "./state";
+import { generateRandom, matrixGenerator } from "./game";
 
 let seconds = 0,
   minutes = 0,
   timerId: any;
-
-const ICON_CARD_TEMPLATE = `
-                          <div class="card-container" id="{{CARD_ID}}" data-card-value="{{CARD_ID}}">
-                            <div class="card-back"></div>
-                            <div class="card-front">
-                              <div class="icon {{CARD_ICON_NAME}}"></div>
-                            </div>
-                          </div>
-                        `;
 
 export function startGame() {
   setState({
@@ -66,6 +58,11 @@ function setNumberOfPlayers(newNumber: number) {
   });
 }
 
+function boardConstructor() {
+  let cardValues = generateRandom(state.gridSize);
+  matrixGenerator(cardValues, state.gridSize);
+}
+
 export function attachGameSettingsControlListeners() {
   // Add Player Button Listeners
   [
@@ -91,6 +88,7 @@ export function attachGameSettingsControlListeners() {
   startButton?.addEventListener("click", () => {
     startGame();
     timerId = setInterval(timeGenerator, 1000);
+    boardConstructor();
   });
 
   // Add reStart Button listeners

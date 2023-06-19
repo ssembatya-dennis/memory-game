@@ -22,7 +22,7 @@ const startScreenDisplayEl: DivElement = document.querySelector(
 const gameContainerEl: DivElement = document.querySelector(
   ".game-container"
 ) as HTMLDivElement;
-const gameBoardContainerEl: DivElement = document.querySelector(
+const gameBoardContainerEl: HTMLDivElement = document.querySelector(
   ".game-board"
 ) as HTMLDivElement;
 const controlsContainerEl: DivElement = document.querySelector(
