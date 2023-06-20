@@ -1,32 +1,51 @@
 import { state } from "./state";
 import { gameBoardContainerEl } from "./elements";
+import { matchCards } from "./utils/matchCards";
 
 // Items array
 const iconsArray = [
-  { name: "football", icon: "football" },
-  { name: "anchor", icon: "anchor" },
-  { name: "flask", icon: "flask" },
-  { name: "sun", icon: "sun" },
-  { name: "hand-spock", icon: "hand-spock" },
-  { name: "bug", icon: "bug" },
-  { name: "moon", icon: "moon" },
-  { name: "snow-flake", icon: "snow-flake" },
-  { name: "lira-sign", icon: "lira-sign" },
-  { name: "car", icon: "car" },
+  { name: "football", value: "football" },
+  { name: "anchor", value: "anchor" },
+  { name: "flask", value: "flask" },
+  { name: "sun", value: "sun" },
+  { name: "hand-spock", value: "hand-spock" },
+  { name: "bug", value: "bug" },
+  { name: "moon", value: "moon" },
+  { name: "snow-flake", value: "snow-flake" },
+  { name: "lira-sign", value: "lira-sign" },
+  { name: "heart", value: "heart" },
+  { name: "shield-halved", value: "shield-halved" },
+  { name: "diamond", value: "diamond" },
+  { name: "ring", value: "ring" },
+  { name: "puzzle-piece", value: "puzzle-piece" },
+  { name: "hat-cowboy", value: "hat-cowboy" },
+  { name: "chess-knight", value: "chess-knight" },
+  { name: "scroll", value: "scroll" },
+  { name: "leaf", value: "leaf" },
 ];
 
 const numbersArray = [
-  { name: "one", number: 1 },
-  { name: "two", number: 2 },
-  { name: "three", number: 3 },
-  { name: "four", number: 4 },
-  { name: "five", number: 5 },
-  { name: "six", number: 6 },
-  { name: "seven", number: 7 },
-  { name: "eight", number: 8 },
-  { name: "nine", number: 9 },
-  { name: "ten", number: 10 },
+  { name: "one", value: 1 },
+  { name: "two", value: 2 },
+  { name: "three", value: 3 },
+  { name: "four", value: 4 },
+  { name: "five", value: 5 },
+  { name: "six", value: 6 },
+  { name: "seven", value: 7 },
+  { name: "eight", value: 8 },
+  { name: "nine", value: 9 },
+  { name: "ten", value: 10 },
+  { name: "eleven", value: 11 },
+  { name: "twelve", value: 12 },
+  { name: "thirteen", value: 13 },
+  { name: "fourteen", value: 14 },
+  { name: "fifteen", value: 15 },
+  { name: "sixteen", value: 16 },
+  { name: "seventeen", value: 17 },
+  { name: "eighteen", value: 18 },
 ];
+
+let cards;
 
 const ICON_CARD_TEMPLATE = `
                           <div class="card-container" id="{{CARD_ID}}" data-card-value="{{CARD_ID}}">
@@ -64,10 +83,16 @@ export function matrixGenerator(cardValues: any, size: number) {
   cardValues.sort(() => Math.random() - 0.5);
   for (let i = 0; i < size * size; i++) {
     gameBoardContainerEl.innerHTML += `
-                              <div class="card-container" data-card-value="${cardValues[i].name}">
+                              <div class="card-container" id="${i}" data-card-value="${
+      cardValues[i].name
+    }">
                                 <div class="card-back"></div>
                                 <div class="card-front">
-                                  <div class="icon ${cardValues[i].icon}"></div>
+                                  ${
+                                    state.gameTheme === "icons"
+                                      ? `<div class="icon ${cardValues[i].value}"></div>`
+                                      : `<span class="numeral">${cardValues[i].value}</span>`
+                                  }
                                 </div>
                               </div>
                             `;
@@ -75,4 +100,8 @@ export function matrixGenerator(cardValues: any, size: number) {
 
   // Grid
   gameBoardContainerEl.style.gridTemplateColumns = `repeat(${size}, auto)`;
+
+  // Cards
+  cards = document.querySelectorAll(".card-container" as any);
+  cards.forEach((card) => matchCards(card, cardValues));
 }
