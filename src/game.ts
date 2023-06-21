@@ -83,7 +83,11 @@ export function matrixGenerator(cardValues: any, size: number) {
   cardValues.sort(() => Math.random() - 0.5);
   for (let i = 0; i < size * size; i++) {
     gameBoardContainerEl.innerHTML += `
-                              <div class="card-container" id="${i}" data-card-value="${
+                              <div class="card-container ${
+                                state.gridSize == 4
+                                  ? "card-container--4"
+                                  : "card-container--6"
+                              }" id="${i}" data-card-value="${
       cardValues[i].name
     }">
                                 <div class="card-back"></div>

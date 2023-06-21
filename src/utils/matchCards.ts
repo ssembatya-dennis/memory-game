@@ -43,8 +43,10 @@ export const matchCards = (card: any, cardsArray: []) => {
           let tempSecondValue = tempSecond.getAttribute("data-card-value");
           let tempFirstCardId = tempFirst.getAttribute("id");
           let tempSecondCardId = tempSecond.getAttribute("id");
-          console.log(tempFirst, tempSecond, tempFirstCardId, tempSecondCardId);
-          if (tempFirstValue !== tempSecondValue) {
+          if (
+            tempFirstCardId == tempSecondCardId ||
+            tempFirstValue != tempSecondValue
+          ) {
             setTimeout(() => {
               tempFirst.classList.remove("flipped");
               tempSecond.classList.remove("flipped");

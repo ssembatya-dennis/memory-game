@@ -385,9 +385,18 @@ h3 {
 
 .card-container {
   position: relative;
+
+  cursor: pointer;
+}
+
+.card-container--4 {
   width: 11rem;
   height: 11rem;
-  cursor: pointer;
+}
+
+.card-container--6 {
+  width: 7rem;
+  height: 7rem;
 }
 
 .card-back,
