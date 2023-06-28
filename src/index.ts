@@ -171,31 +171,3 @@ attachGameSettingsControlListeners();
 // };
 
 // // Stop game
-
-// // Modal windows
-
-// const openModalButton = document.querySelector("[data-modal-target]" as any)!;
-// const closeModalButton = document.querySelector("[data-close-button]" as any)!;
-// const overlay = document.getElementById("overlay")!;
-
-// openModalButton.addEventListener("click", () => {
-//   const modal = document.querySelector(openModalButton.dataset.modalTarget);
-//   openModal(modal);
-// });
-
-// closeModalButton.addEventListener("click", () => {
-//   const modal = closeModalButton.closest(".btn-modal-mobile");
-//   closeModal(modal);
-// });
-
-// function openModal(modal: any) {
-//   if (modal == null) return;
-//   modal.classList.add("active");
-//   overlay.classList.add("active");
-// }
-
-// function closeModal(modal: any) {
-//   if (modal == null) return;
-//   modal.classList.remove("active");
-//   overlay.classList.remove("active");
-// }

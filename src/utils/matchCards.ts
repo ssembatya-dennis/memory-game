@@ -27,10 +27,11 @@ export const matchCards = (card: any, cardsArray: []) => {
         if (firstCardValue == secondCardValue && firstCardId != secondCardId) {
           firstCard.classList.add("matched");
           secondCard.classList.add("matched");
+          winCount++;
         }
         if (winCount == Math.floor(cardsArray.length / 2)) {
-          // where we handle the win UI
-          //stopGame();
+          console.log(cardsArray);
+          console.log(winCount);
         } else {
           let [tempFirst, tempSecond] = [firstCard, secondCard];
           let tempFirstValue = tempFirst.getAttribute("data-card-value");

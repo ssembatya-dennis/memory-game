@@ -110,7 +110,10 @@
         </div>
 
         <div class="game-buttons game-buttons--desktop">
-          <button class="btn btn-text menu-button--small" id="restart-btn">
+          <button
+            class="btn btn-text menu-button--small restart-btn"
+            id="restart-btn"
+          >
             Restart
           </button>
           <button id="new-game" class="btn btn-text btn-secondary">
@@ -126,22 +129,20 @@
           >
             Menu
           </button>
-          <div class="btn-modal-mobile" id="btn-modal">
+          <div class="btn-modal-mobile" id="modal-mobile">
             <button
-              class="btn btn-text menu-button--small btn-modal"
-              id="restart-btn"
+              class="btn btn-text menu-button--small btn-modal restart-btn"
+              id="restart-btn--mobile"
             >
               Restart
             </button>
-            <button class="btn btn-text btn-secondary btn-modal">
+            <button
+              class="btn btn-text btn-secondary btn-modal"
+              id="new-game--mobile"
+            >
               New game
             </button>
-            <button
-              data-close-button
-              class="btn btn-text btn-secondary btn-modal"
-            >
-              Resume
-            </button>
+            <button class="btn btn-text btn-secondary btn-modal">Resume</button>
           </div>
         </div>
       </div>

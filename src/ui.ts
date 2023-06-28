@@ -12,11 +12,16 @@ import {
   playerButtonOption4,
   gridBtnOption1,
   gridBtnOption2,
+  menuMobileButton,
+  mobileModal,
+  reStartBtnMobile,
+  newGameBtnMobile,
 } from "./elements";
 import { state, setState, resetState } from "./state";
 import { generateRandom, matrixGenerator } from "./game";
 import { startTimer, resetTimer, stopTimer } from "./utils/manageTime";
 import { resetMovesCounter } from "./utils/manageMoves";
+import { closeModal, openModal } from "./utils/modal";
 
 export function startGame() {
   setState({
@@ -101,6 +106,28 @@ export function attachGameSettingsControlListeners() {
     newGame();
     stopTimer();
     resetMovesCounter();
+  });
+
+  ///////////////////////////////////////////////////////
+  ///// Mobile controls
+  menuMobileButton.addEventListener("click", () => {
+    openModal(mobileModal);
+    startTimer();
+  });
+
+  reStartBtnMobile?.addEventListener("click", () => {
+    restartGame();
+    resetTimer();
+    resetMovesCounter();
+    boardConstructor();
+    closeModal(mobileModal);
+  });
+
+  newGameBtnMobile?.addEventListener("click", () => {
+    newGame();
+    stopTimer();
+    resetMovesCounter();
+    closeModal(mobileModal);
   });
 }
 

@@ -13,8 +13,14 @@ const startButton: ButtonElement = document.getElementById(
 const reStartButton: ButtonElement = document.getElementById(
   "restart-btn"
 ) as HTMLButtonElement;
+const reStartBtnMobile: ButtonElement = document.getElementById(
+  "restart-btn--mobile"
+) as HTMLButtonElement;
 const newGameButton: ButtonElement = document.getElementById(
   "new-game"
+) as HTMLButtonElement;
+const newGameBtnMobile: ButtonElement = document.getElementById(
+  "new-game--mobile"
 ) as HTMLButtonElement;
 const startScreenDisplayEl: DivElement = document.querySelector(
   ".start-screen"
@@ -52,12 +58,23 @@ const gridBtnOption1: ButtonElement = document.getElementById(
 const gridBtnOption2: ButtonElement = document.getElementById(
   "grid_size_6"
 ) as HTMLButtonElement;
+const menuMobileButton: HTMLButtonElement = document.querySelector(
+  "[data-modal-target]"
+) as HTMLButtonElement;
+const overlay: HTMLDivElement = document.getElementById(
+  "overlay"
+) as HTMLDivElement;
+const mobileModal: HTMLDivElement = document.getElementById(
+  "modal-mobile"
+) as HTMLDivElement;
 export {
   moveContainerEl,
   timeContainerEl,
   startButton,
   reStartButton,
+  reStartBtnMobile,
   newGameButton,
+  newGameBtnMobile,
   startScreenDisplayEl,
   gameContainerEl,
   gameBoardContainerEl,
@@ -70,4 +87,7 @@ export {
   playerButtonOption4,
   gridBtnOption1,
   gridBtnOption2,
+  menuMobileButton,
+  overlay,
+  mobileModal,
 };
