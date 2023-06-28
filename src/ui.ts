@@ -1,7 +1,6 @@
 import {
   startScreenDisplayEl,
   gameContainerEl,
-  timeContainerEl,
   newGameButton,
   startButton,
   reStartButton,
@@ -16,10 +15,7 @@ import {
 } from "./elements";
 import { state, setState, resetState } from "./state";
 import { generateRandom, matrixGenerator } from "./game";
-
-let seconds = 0,
-  minutes = 0,
-  timerId: any;
+import { startTimer, resetTimer, stopTimer } from "./utils/manageTime";
 
 export function startGame() {
   setState({
@@ -87,19 +83,20 @@ export function attachGameSettingsControlListeners() {
   // Add Start Button listeners
   startButton?.addEventListener("click", () => {
     startGame();
-    timerId = setInterval(timeGenerator, 1000);
+    startTimer();
     boardConstructor();
   });
 
   // Add reStart Button listeners
   reStartButton?.addEventListener("click", () => {
     restartGame();
-    clearInterval(timerId);
+    resetTimer();
   });
 
   // Add newGame button listeners
   newGameButton?.addEventListener("click", () => {
     newGame();
+    stopTimer();
   });
 }
 
@@ -160,18 +157,4 @@ function updateGridSizeButtons() {
     gridBtnOption1?.classList.remove("menu-button-active");
     gridBtnOption2?.classList.add("menu-button-active");
   }
-}
-
-function timeGenerator() {
-  seconds += 1;
-
-  // minutes logic
-  if (seconds >= 60) {
-    minutes += 1;
-    seconds = 0;
-  }
-  // format time before displaying
-  let secondsValue = seconds < 10 ? `0${seconds}` : seconds;
-  let minutesValue = minutes < 10 ? `0${minutes}` : minutes;
-  return (timeContainerEl.innerHTML = `<span>${minutesValue}:${secondsValue}</span>`);
 }
