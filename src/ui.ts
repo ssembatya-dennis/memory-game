@@ -93,6 +93,7 @@ export function attachGameSettingsControlListeners() {
     restartGame();
     resetTimer();
     resetMovesCounter();
+    boardConstructor();
   });
 
   // Add newGame button listeners
