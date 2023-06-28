@@ -16,6 +16,7 @@ import {
 import { state, setState, resetState } from "./state";
 import { generateRandom, matrixGenerator } from "./game";
 import { startTimer, resetTimer, stopTimer } from "./utils/manageTime";
+import { resetMovesCounter } from "./utils/manageMoves";
 
 export function startGame() {
   setState({
@@ -91,12 +92,14 @@ export function attachGameSettingsControlListeners() {
   reStartButton?.addEventListener("click", () => {
     restartGame();
     resetTimer();
+    resetMovesCounter();
   });
 
   // Add newGame button listeners
   newGameButton?.addEventListener("click", () => {
     newGame();
     stopTimer();
+    resetMovesCounter();
   });
 }
 

@@ -1,4 +1,4 @@
-import { moveContainerEl } from "../elements";
+import { startMovesCounter } from "./manageMoves";
 
 let firstCardValue: any = null;
 let firstCardId: any;
@@ -7,12 +7,6 @@ let secondCardId: any;
 let firstCard: any = null;
 let secondCard: any = null;
 let winCount = 0;
-let movesCount = 0;
-
-const movesCounter = () => {
-  movesCount += 1;
-  moveContainerEl.innerHTML = `<span>${movesCount}</span>`;
-};
 
 export const matchCards = (card: any, cardsArray: []) => {
   card.addEventListener("click", () => {
@@ -24,7 +18,7 @@ export const matchCards = (card: any, cardsArray: []) => {
         firstCardValue = card.getAttribute("data-card-value");
         firstCardId = card.getAttribute("id");
       } else {
-        movesCounter();
+        startMovesCounter();
         secondCard = card;
 
         secondCardValue = card.getAttribute("data-card-value");
