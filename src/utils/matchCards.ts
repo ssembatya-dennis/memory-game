@@ -1,8 +1,6 @@
-import { winnerScreen } from "../elements";
 import { setState, state } from "../state";
 import { startMovesCounter } from "./manageMoves";
-import { startTimer } from "./manageTime";
-import { openModal } from "./modal";
+import { displayWinnerScreen } from "./winnerLogic";
 
 let firstCardValue: any = null;
 let firstCardId: any;
@@ -10,6 +8,8 @@ let secondCardValue: any = null;
 let secondCardId: any;
 let firstCard: any = null;
 let secondCard: any = null;
+let time = localStorage.getItem("time")!;
+let move = localStorage.getItem("moves")!;
 
 export const matchCards = (card: any, cardsArray: []) => {
   card.addEventListener("click", () => {
@@ -36,8 +36,8 @@ export const matchCards = (card: any, cardsArray: []) => {
           });
         }
         if (state.winner == Math.floor(cardsArray.length / 2)) {
-          openModal(winnerScreen);
-          startTimer();
+          // winner screen Logic
+          displayWinnerScreen(time, move);
         } else {
           let [tempFirst, tempSecond] = [firstCard, secondCard];
           let tempFirstValue = tempFirst.getAttribute("data-card-value");

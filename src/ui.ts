@@ -18,6 +18,8 @@ import {
   newGameBtnMobile,
   resume,
   winnerScreen,
+  reStartBtnWinner,
+  newGameBtnWinner,
 } from "./elements";
 import { state, setState, resetState } from "./state";
 import { generateRandom, matrixGenerator } from "./game";
@@ -31,11 +33,11 @@ export function startGame() {
   });
 }
 
-function newGame() {
+export function newGame() {
   resetState();
 }
 
-function restartGame() {
+export function restartGame() {
   setState({
     flippedCards: [],
     elapsedTimeInMilliseconds: 0,
@@ -98,10 +100,9 @@ export function attachGameSettingsControlListeners() {
   // Add reStart Button listeners
   reStartButton?.addEventListener("click", () => {
     restartGame();
-    startTimer();
+    resetTimer();
     resetMovesCounter();
     boardConstructor();
-    openModal(winnerScreen);
   });
 
   // Add newGame button listeners
@@ -136,6 +137,24 @@ export function attachGameSettingsControlListeners() {
   resume?.addEventListener("click", () => {
     startTimer();
     closeModal(mobileModal);
+  });
+
+  //////////////////////////////////////////////////
+  ////////// Winner Screen
+
+  reStartBtnWinner?.addEventListener("click", () => {
+    restartGame();
+    resetTimer();
+    resetMovesCounter();
+    boardConstructor();
+    closeModal(winnerScreen);
+  });
+
+  newGameBtnWinner?.addEventListener("click", () => {
+    newGame();
+    stopTimer();
+    resetMovesCounter();
+    closeModal(winnerScreen);
   });
 }
 

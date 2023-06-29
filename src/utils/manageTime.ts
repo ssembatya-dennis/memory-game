@@ -19,6 +19,7 @@ function updateTime() {
   const currentTime = Date.now();
   elapsedTime = currentTime - startTime;
   const formattedTime = formatTime(elapsedTime);
+  localStorage.setItem("time", formattedTime);
   timeContainerEl.innerHTML = `<span>${formattedTime}</span>`;
 }
 

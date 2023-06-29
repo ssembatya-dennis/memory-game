@@ -16,11 +16,17 @@ const reStartButton: ButtonElement = document.getElementById(
 const reStartBtnMobile: ButtonElement = document.getElementById(
   "restart-btn--mobile"
 ) as HTMLButtonElement;
+const reStartBtnWinner: ButtonElement = document.getElementById(
+  "restart-btn--winner"
+) as HTMLButtonElement;
 const newGameButton: ButtonElement = document.getElementById(
   "new-game"
 ) as HTMLButtonElement;
 const newGameBtnMobile: ButtonElement = document.getElementById(
   "new-game--mobile"
+) as HTMLButtonElement;
+const newGameBtnWinner: ButtonElement = document.getElementById(
+  "new-game--winner"
 ) as HTMLButtonElement;
 const startScreenDisplayEl: DivElement = document.querySelector(
   ".start-screen"
@@ -73,14 +79,28 @@ const resume: ButtonElement = document.getElementById(
 const winnerScreen: DivElement = document.getElementById(
   "winner-screen"
 ) as HTMLDivElement;
+const winnerScreenTime: HTMLSpanElement = document.getElementById(
+  "winner-screen_time"
+) as HTMLSpanElement;
+const winnerScreenMoves: HTMLSpanElement = document.getElementById(
+  "winner-screen_move"
+) as HTMLSpanElement;
+const winnerTitle: HTMLHeadingElement = document.getElementById(
+  "winner-title"
+) as HTMLHeadingElement;
+const highScore: HTMLSpanElement = document.getElementById(
+  "high-score"
+) as HTMLSpanElement;
 export {
   moveContainerEl,
   timeContainerEl,
   startButton,
   reStartButton,
   reStartBtnMobile,
+  reStartBtnWinner,
   newGameButton,
   newGameBtnMobile,
+  newGameBtnWinner,
   resume,
   startScreenDisplayEl,
   gameContainerEl,
@@ -95,7 +115,11 @@ export {
   gridBtnOption1,
   gridBtnOption2,
   winnerScreen,
+  winnerScreenTime,
+  winnerScreenMoves,
   menuMobileButton,
+  winnerTitle,
+  highScore,
   overlay,
   mobileModal,
 };
