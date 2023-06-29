@@ -47,15 +47,6 @@ const numbersArray = [
 
 let cards;
 
-const ICON_CARD_TEMPLATE = `
-                          <div class="card-container" id="{{CARD_ID}}" data-card-value="{{CARD_ID}}">
-                            <div class="card-back"></div>
-                            <div class="card-front">
-                              <div class="icon {{CARD_ICON_NAME}}"></div>
-                            </div>
-                          </div>
-                        `;
-
 // Pick random objects from the items array
 export function generateRandom(size: number) {
   let tempArray =
