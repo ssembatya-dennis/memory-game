@@ -20,6 +20,8 @@ import {
   winnerScreen,
   reStartBtnWinner,
   newGameBtnWinner,
+  soloStats,
+  multipleStats,
 } from "./elements";
 import { state, setState, resetState } from "./state";
 import { generateRandom, matrixGenerator } from "./game";
@@ -95,6 +97,7 @@ export function attachGameSettingsControlListeners() {
     startGame();
     startTimer();
     boardConstructor();
+    console.log(state.numberOfPlayers);
   });
 
   // Add reStart Button listeners
@@ -164,6 +167,7 @@ export function buildUI() {
     updateThemeButtons();
     updatePlayerNumberButtons();
     updateGridSizeButtons();
+    updatePlayerStats();
   }
 }
 
@@ -214,5 +218,15 @@ function updateGridSizeButtons() {
   } else if (state.gridSize === 6) {
     gridBtnOption1?.classList.remove("menu-button-active");
     gridBtnOption2?.classList.add("menu-button-active");
+  }
+}
+
+function updatePlayerStats() {
+  if (state.numberOfPlayers === 1) {
+    soloStats?.classList.remove("hide");
+    multipleStats?.classList.add("hide");
+  } else {
+    soloStats?.classList.add("hide");
+    multipleStats?.classList.remove("hide");
   }
 }

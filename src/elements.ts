@@ -91,6 +91,12 @@ const winnerTitle: HTMLHeadingElement = document.getElementById(
 const highScore: HTMLSpanElement = document.getElementById(
   "high-score"
 ) as HTMLSpanElement;
+const soloStats: DivElement = document.getElementById(
+  "solo-stats"
+) as HTMLDivElement;
+const multipleStats: HTMLDivElement = document.getElementById(
+  "multiple-stats"
+) as HTMLDivElement;
 export {
   moveContainerEl,
   timeContainerEl,
@@ -122,4 +128,6 @@ export {
   highScore,
   overlay,
   mobileModal,
+  soloStats,
+  multipleStats,
 };

@@ -352,6 +352,14 @@ h3 {
   justify-content: space-between;
 }
 
+.stats-container--multiple {
+  width: 100%;
+  height: auto;
+  margin: 1.5rem auto;
+  display: flex;
+  justify-content: space-between;
+}
+
 .stats-card {
   display: flex;
   justify-content: space-between;
