@@ -9,7 +9,7 @@ type GameState = {
   gridSize: number;
   flippedCards: string[];
   gameState: "start" | "ongoing" | "paused" | "completed";
-  winner: number | null;
+  winner: number;
 };
 
 const DEFAULT_STATE: GameState = {
@@ -21,7 +21,7 @@ const DEFAULT_STATE: GameState = {
   gridSize: 4,
   flippedCards: [],
   gameState: "start",
-  winner: null,
+  winner: 0,
 };
 
 let state: GameState = DEFAULT_STATE;

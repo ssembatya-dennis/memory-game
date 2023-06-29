@@ -110,10 +110,7 @@
         </div>
 
         <div class="game-buttons game-buttons--desktop">
-          <button
-            class="btn btn-text menu-button--small restart-btn"
-            id="restart-btn"
-          >
+          <button class="btn btn-text menu-button--small" id="restart-btn">
             Restart
           </button>
           <button id="new-game" class="btn btn-text btn-secondary">
@@ -131,7 +128,7 @@
           </button>
           <div class="btn-modal-mobile" id="modal-mobile">
             <button
-              class="btn btn-text menu-button--small btn-modal restart-btn"
+              class="btn btn-text menu-button--small btn-modal"
               id="restart-btn--mobile"
             >
               Restart
@@ -142,13 +139,45 @@
             >
               New game
             </button>
-            <button class="btn btn-text btn-secondary btn-modal">Resume</button>
+            <button class="btn btn-text btn-secondary btn-modal" id="resume">
+              Resume
+            </button>
           </div>
         </div>
       </div>
 
       <div class="board-wrapper">
         <div class="game-board"></div>
+      </div>
+
+      <div class="winner-screen" id="winner-screen">
+        <h1 class="winner-screen_title">You did it</h1>
+        <p class="winner-screen_text">Game over! Here’s how you got on…</p>
+
+        <div class="winner-screen_stats">
+          <div class="winner-screen_stat">
+            <span class="winner-screen_stat--text">Time Elapsed</span>
+            <span class="winner-screen_stat--num">0</span>
+          </div>
+
+          <div class="winner-screen_stat">
+            <span class="winner-screen_stat--text">Moves Taken</span>
+            <span class="winner-screen_stat--num">moves</span>
+          </div>
+        </div>
+
+        <div class="winner-screen_buttons">
+          <button
+            class="btn btn-text menu-button--small btn-screen"
+            id="restart-btn"
+          >
+            Restart
+          </button>
+
+          <button id="new-game" class="btn btn-text btn-secondary btn-screen">
+            Setup New Game
+          </button>
+        </div>
       </div>
 
       <div class="stats-container">

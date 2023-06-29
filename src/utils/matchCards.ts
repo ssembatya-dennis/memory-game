@@ -1,4 +1,8 @@
+import { winnerScreen } from "../elements";
+import { setState, state } from "../state";
 import { startMovesCounter } from "./manageMoves";
+import { startTimer } from "./manageTime";
+import { openModal } from "./modal";
 
 let firstCardValue: any = null;
 let firstCardId: any;
@@ -6,7 +10,6 @@ let secondCardValue: any = null;
 let secondCardId: any;
 let firstCard: any = null;
 let secondCard: any = null;
-let winCount = 0;
 
 export const matchCards = (card: any, cardsArray: []) => {
   card.addEventListener("click", () => {
@@ -27,11 +30,14 @@ export const matchCards = (card: any, cardsArray: []) => {
         if (firstCardValue == secondCardValue && firstCardId != secondCardId) {
           firstCard.classList.add("matched");
           secondCard.classList.add("matched");
-          winCount++;
+          state.winner = state.winner + 1;
+          setState({
+            winner: state.winner,
+          });
         }
-        if (winCount == Math.floor(cardsArray.length / 2)) {
-          console.log(cardsArray);
-          console.log(winCount);
+        if (state.winner == Math.floor(cardsArray.length / 2)) {
+          openModal(winnerScreen);
+          startTimer();
         } else {
           let [tempFirst, tempSecond] = [firstCard, secondCard];
           let tempFirstValue = tempFirst.getAttribute("data-card-value");

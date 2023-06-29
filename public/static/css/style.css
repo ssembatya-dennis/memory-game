@@ -364,8 +364,8 @@ h3 {
   padding: 2.1rem;
 }
 
-/* .game-buttons {
-} */
+/* .game-buttons 
+ */
 .game-buttons--desktop {
   display: flex;
   justify-content: space-between;
@@ -383,6 +383,96 @@ h3 {
   margin: 2rem 10rem 0;
 }
 
+/* Winner screen
+*/
+.winner-screen {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  margin: 0 auto;
+  width: 654px;
+  height: 510px;
+  background: var(--color-gray-light-1);
+  border-radius: 20px;
+  padding: 5.6rem;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 1rem;
+}
+
+.winner-screen.active {
+  display: block;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.winner-screen_title {
+  font-style: normal;
+  font-weight: 700;
+  margin-bottom: 16px;
+  text-align: center;
+  line-height: normal;
+  color: var(--color-primary-dark-2);
+}
+
+.winner-screen_text {
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  margin-bottom: 40px;
+  text-align: center;
+  line-height: normal;
+  color: var(--color-primary);
+}
+
+.winner-screen_stats {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.winner-screen_stat {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 10px;
+  background: #dfe7ec;
+  padding: 25px 32px;
+}
+
+.winner-screen_stat--text {
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  color: var(--color-primary);
+}
+
+.winner-screen_stat--num {
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  color: var(--color-primary-dark-1);
+}
+
+.winner-screen_buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.btn-text.btn-screen {
+  width: 100%;
+  height: 52px;
+}
+
+/* Card styles */
 .card-container {
   position: relative;
 

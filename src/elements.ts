@@ -67,6 +67,12 @@ const overlay: HTMLDivElement = document.getElementById(
 const mobileModal: HTMLDivElement = document.getElementById(
   "modal-mobile"
 ) as HTMLDivElement;
+const resume: ButtonElement = document.getElementById(
+  "resume"
+) as HTMLButtonElement;
+const winnerScreen: DivElement = document.getElementById(
+  "winner-screen"
+) as HTMLDivElement;
 export {
   moveContainerEl,
   timeContainerEl,
@@ -75,6 +81,7 @@ export {
   reStartBtnMobile,
   newGameButton,
   newGameBtnMobile,
+  resume,
   startScreenDisplayEl,
   gameContainerEl,
   gameBoardContainerEl,
@@ -87,6 +94,7 @@ export {
   playerButtonOption4,
   gridBtnOption1,
   gridBtnOption2,
+  winnerScreen,
   menuMobileButton,
   overlay,
   mobileModal,
