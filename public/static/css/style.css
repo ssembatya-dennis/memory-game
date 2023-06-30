@@ -353,11 +353,12 @@ h3 {
 }
 
 .stats-container--multiple {
-  width: 100%;
+  width: 80%;
   height: auto;
   margin: 1.5rem auto;
   display: flex;
   justify-content: space-between;
+  gap: 30px;
 }
 
 .stats-card {

@@ -1,5 +1,5 @@
 import { state } from "./state";
-import { gameBoardContainerEl } from "./elements";
+import { gameBoardContainerEl, multipleStats } from "./elements";
 import { matchCards } from "./utils/matchCards";
 
 // Items array
@@ -99,4 +99,18 @@ export function matrixGenerator(cardValues: any, size: number) {
   // Cards
   cards = document.querySelectorAll(".card-container" as any);
   cards.forEach((card) => matchCards(card, cardValues));
+}
+
+//////////////////////////////////////////////////////////////////////////////
+////////////////// Multiple Player Game Board Screen
+
+export function displayMultipleStats() {
+  multipleStats.innerHTML = "";
+  for (let i = 1; i <= state.numberOfPlayers; i++) {
+    multipleStats.innerHTML += `  <div class="stats-card">
+                                    <span class="stats-text">Player 1</span>
+                                    <span class="stats-num">0</span>
+                                  </div>
+                                `;
+  }
 }
