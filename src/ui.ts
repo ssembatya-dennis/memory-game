@@ -98,7 +98,6 @@ export function attachGameSettingsControlListeners() {
     startTimer();
     boardConstructor();
     displayMultipleStats();
-    console.log(state.numberOfPlayers);
   });
 
   // Add reStart Button listeners
