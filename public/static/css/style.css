@@ -352,15 +352,6 @@ h3 {
   justify-content: space-between;
 }
 
-.stats-container--multiple {
-  width: 80%;
-  height: auto;
-  margin: 1.5rem auto;
-  display: flex;
-  justify-content: space-between;
-  gap: 30px;
-}
-
 .stats-card {
   display: flex;
   justify-content: space-between;
@@ -371,6 +362,58 @@ h3 {
   background: #dfe7ec;
   border-radius: 10px;
   padding: 2.1rem;
+}
+
+.stats-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2.3rem;
+}
+
+.stats-container--multiple {
+  width: 80%;
+  height: auto;
+  margin: 1.5rem auto;
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.stats-current {
+  display: none;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 5px;
+  color: var(--color-primary-dark-2);
+}
+
+.match-multiple {
+  background: var(--color-secondary);
+  position: relative;
+}
+
+.match-multiple::after {
+  display: flex;
+  content: "";
+  width: 5rem;
+  height: 3rem;
+  background-color: var(--color-secondary);
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  position: absolute;
+  top: -40%;
+  left: 42%;
+}
+
+.match-multiple--text {
+  color: var(--color-gray-light-2);
+}
+
+.match-multiple--span {
+  display: inline-block;
 }
 
 /* .game-buttons 

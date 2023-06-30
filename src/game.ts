@@ -107,9 +107,14 @@ export function matrixGenerator(cardValues: any, size: number) {
 export function displayMultipleStats() {
   multipleStats.innerHTML = "";
   for (let i = 0; i < state.numberOfPlayers; i++) {
-    multipleStats.innerHTML += `  <div class="stats-card">
-                                    <span class="stats-text">Player 1</span>
-                                    <span class="stats-num">0</span>
+    multipleStats.innerHTML += `  <div class="stats-wrapper">
+                                    <div class="stats-card">
+                                      <span class="stats-text">
+                                        Player ${i + 1}
+                                      </span>
+                                      <span class="stats-num">0</span>
+                                    </div>
+                                    <span class="stats-current">CURRENT TURN</span>
                                   </div>
                                 `;
   }
