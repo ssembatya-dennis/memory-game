@@ -24,7 +24,7 @@ import {
   multipleStats,
 } from "./elements";
 import { state, setState, resetState } from "./state";
-import { displayMultipleStats, generateRandom, matrixGenerator } from "./game";
+import { generateRandom, matrixGenerator } from "./game";
 import { startTimer, resetTimer, stopTimer } from "./utils/manageTime";
 import { resetMovesCounter } from "./utils/manageMoves";
 import { closeModal, openModal } from "./utils/modal";
@@ -97,7 +97,6 @@ export function attachGameSettingsControlListeners() {
     startGame();
     startTimer();
     boardConstructor();
-    displayMultipleStats();
   });
 
   // Add reStart Button listeners

@@ -96,15 +96,7 @@ export function matrixGenerator(cardValues: any, size: number) {
   // Grid
   gameBoardContainerEl.style.gridTemplateColumns = `repeat(${size}, auto)`;
 
-  // Cards
-  cards = document.querySelectorAll(".card-container" as any);
-  cards.forEach((card) => matchCards(card, cardValues));
-}
-
-//////////////////////////////////////////////////////////////////////////////
-////////////////// Multiple Player Game Board Screen
-
-export function displayMultipleStats() {
+  // Multiple Player Game Board Screen
   multipleStats.innerHTML = "";
   for (let i = 0; i < state.numberOfPlayers; i++) {
     multipleStats.innerHTML += `  <div class="stats-wrapper" id="multi-player--${i}"}>
@@ -118,4 +110,11 @@ export function displayMultipleStats() {
                                   </div>
                                 `;
   }
+
+  let multiStats = document.querySelectorAll(".stats-wrapper" as any);
+  multiStats.forEach((card) => console.log(card));
+
+  // Cards
+  cards = document.querySelectorAll(".card-container" as any);
+  cards.forEach((card) => matchCards(card, cardValues));
 }
