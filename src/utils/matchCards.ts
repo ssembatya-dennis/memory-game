@@ -1,5 +1,5 @@
 import { setState, state } from "../state";
-import { startMovesCounter } from "./manageMoves";
+import { multiplayerMovesCounter, startMovesCounter } from "./manageMoves";
 import { displayWinnerScreen } from "./winnerLogic";
 
 let firstCardValue: any = null;
@@ -11,7 +11,11 @@ let secondCard: any = null;
 let time = localStorage.getItem("time")!;
 let move = localStorage.getItem("moves")!;
 
-export const matchCards = (card: any, cardsArray: []) => {
+export const matchCards = (
+  card: any,
+  cardsArray: [],
+  multiplayerMovesArray: []
+) => {
   card.addEventListener("click", () => {
     if (!card.classList.contains("matched")) {
       card.classList.add("flipped");
@@ -21,7 +25,8 @@ export const matchCards = (card: any, cardsArray: []) => {
         firstCardValue = card.getAttribute("data-card-value");
         firstCardId = card.getAttribute("id");
       } else {
-        startMovesCounter();
+        // startMovesCounter();
+        multiplayerMovesCounter(multiplayerMovesArray);
         secondCard = card;
 
         secondCardValue = card.getAttribute("data-card-value");

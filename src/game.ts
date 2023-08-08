@@ -45,7 +45,7 @@ const numbersArray = [
   { name: "eighteen", value: 18 },
 ];
 
-let cards;
+let cards, multiStats: any;
 
 // Pick random objects from the items array
 export function generateRandom(size: number) {
@@ -99,22 +99,22 @@ export function matrixGenerator(cardValues: any, size: number) {
   // Multiple Player Game Board Screen
   multipleStats.innerHTML = "";
   for (let i = 0; i < state.numberOfPlayers; i++) {
-    multipleStats.innerHTML += `  <div class="stats-wrapper" id="multi-player--${i}"}>
+    multipleStats.innerHTML += `  <div class="stats-wrapper">
                                     <div class="stats-card">
                                       <span class="stats-text">
                                         Player ${i + 1}
                                       </span>
-                                      <div class="stats-num" id="move-count--${i}">0</div>
+                                      <div class="stats-num move-count">0</div>
                                     </div>
                                     <span class="stats-current">CURRENT TURN</span>
                                   </div>
                                 `;
   }
 
-  let multiStats = document.querySelectorAll(".stats-wrapper" as any);
-  multiStats.forEach((card) => console.log(card));
+  // multiple stats
+  multiStats = document.querySelectorAll(".move-count" as any);
 
   // Cards
   cards = document.querySelectorAll(".card-container" as any);
-  cards.forEach((card) => matchCards(card, cardValues));
+  cards.forEach((card) => matchCards(card, cardValues, multiStats));
 }
