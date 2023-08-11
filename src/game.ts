@@ -1,6 +1,6 @@
 import { state } from "./state";
 import { gameBoardContainerEl, multipleStats } from "./elements";
-import { matchCards } from "./utils/matchCards";
+import { multiCardsMatcher } from "./utils/match-cards/multiCardsMatcher";
 
 // Items array
 const iconsArray = [
@@ -99,7 +99,9 @@ export function matrixGenerator(cardValues: any, size: number) {
   // Multiple Player Game Board Screen
   multipleStats.innerHTML = "";
   for (let i = 0; i < state.numberOfPlayers; i++) {
-    multipleStats.innerHTML += `  <div class="stats-wrapper">
+    multipleStats.innerHTML += `  <div class="stats-wrapper" id="player-${
+      i + 1
+    }">
                                     <div class="stats-card">
                                       <span class="stats-text">
                                         Player ${i + 1}
@@ -112,9 +114,9 @@ export function matrixGenerator(cardValues: any, size: number) {
   }
 
   // multiple stats
-  multiStats = document.querySelectorAll(".move-count" as any);
+  multiStats = document.querySelectorAll(".stats-wrapper");
 
   // Cards
   cards = document.querySelectorAll(".card-container" as any);
-  cards.forEach((card) => matchCards(card, cardValues, multiStats));
+  cards.forEach((card) => multiCardsMatcher(card, cardValues, multiStats));
 }
