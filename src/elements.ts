@@ -1,5 +1,5 @@
 type DivElement = HTMLDivElement;
-type ButtonElement = HTMLButtonElement | null;
+type ButtonElement = HTMLButtonElement;
 
 const moveContainerEl: DivElement = document.getElementById(
   "move-count"
@@ -29,6 +29,16 @@ const controlsContainerEl: DivElement = document.querySelector(
   ".game-controls"
 ) as HTMLDivElement;
 
+const openModalButton: ButtonElement | any = document.querySelector(
+  "[data-modal-target]"
+) as HTMLButtonElement;
+const closeModalButton: ButtonElement = document.querySelector(
+  "[data-close-button]"
+) as HTMLButtonElement;
+const overlay: DivElement = document.getElementById(
+  "overlay"
+) as HTMLDivElement;
+
 // Items array
 const items = [
   { name: "football", icon: "football" },
@@ -53,4 +63,7 @@ export {
   gameContainerEl,
   gameBoardContainerEl,
   controlsContainerEl,
+  openModalButton,
+  closeModalButton,
+  overlay,
 };
