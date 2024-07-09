@@ -1,4 +1,4 @@
-type DivElement = HTMLDivElement | null;
+type DivElement = HTMLDivElement;
 type ButtonElement = HTMLButtonElement | null;
 
 const moveContainerEl: DivElement = document.getElementById(
@@ -28,6 +28,20 @@ const gameBoardContainerEl: DivElement = document.querySelector(
 const controlsContainerEl: DivElement = document.querySelector(
   ".game-controls"
 ) as HTMLDivElement;
+
+// Items array
+const items = [
+  { name: "football", icon: "football" },
+  { name: "anchor", icon: "anchor" },
+  { name: "flask", icon: "flask" },
+  { name: "sun", icon: "sun" },
+  { name: "hand-spock", icon: "hand-spock" },
+  { name: "bug", icon: "bug" },
+  { name: "moon", icon: "moon" },
+  { name: "snow-flake", icon: "snow-flake" },
+  { name: "lira-sign", icon: "lira-sign" },
+  { name: "car", icon: "car" },
+];
 
 export {
   moveContainerEl,
