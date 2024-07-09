@@ -1,14 +1,4 @@
 // From source
-const moves = document.getElementById("move-count")!;
-const timeValue = document.getElementById("time")!;
-const startButton = document.getElementById("start")!;
-const reStartButton = document.getElementById("restart-btn")!;
-const newGameButton = document.getElementById("new-game");
-const startScreen = document.querySelector(".start-screen")!;
-const gameContainer = document.querySelector(".game-container")!;
-const gameBoard = document.querySelector(".game-board" as any)!;
-const controls = document.querySelector(".game-controls");
-
 let cards;
 let interval;
 let firstCardValue: any = null;
